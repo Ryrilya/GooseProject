@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee419a6b1a309aa40b03412829992552, type: 3}
+  m_Name: Ocatenna5G
+  m_EditorClassIdentifier: 
+  name: Ocatenna5G
+  lore: 
+  sprite: {fileID: 21300000, guid: 7a11ddeaf6397df478467d94e9572b56, type: 3}
+  modelFBX: {fileID: 5567597872296394221, guid: ecae45a200351bf4e914517e913efc01,
+    type: 3}
+  rotation: {x: 0, y: 90, z: 0}
+  scale: {x: 2, y: 2, z: 2}
+  cameraOffset: {x: 0, y: -1.5, z: -1.8}
