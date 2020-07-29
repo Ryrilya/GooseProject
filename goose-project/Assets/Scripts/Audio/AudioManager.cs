@@ -2,12 +2,13 @@
 using System;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoSingleton<AudioManager>
 {
     public Sound[] sounds;
-    void Awake()
+
+    private void Start()
     {
-        foreach(Sound s in sounds)
+        foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -15,10 +16,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
-    }
 
-    private void Start()
-    {
         Play("NightTheme");
     }
 
@@ -31,5 +29,16 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
+    }
+
+    public void Play(AudioClip clip)
+    {
+        Sound s = Array.Find(sounds, sound => sound.clip == clip);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + s.name + " not found!");
+            return;
+        }
+        s.source.PlayOneShot(clip);
     }
 }

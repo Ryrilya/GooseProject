@@ -16,9 +16,13 @@ public class RadialMenu : MonoBehaviour
     private GooseDisplay gooseDisplay;
     private Image ringMenuBg;
 
+    private AudioManager _audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        _audioManager = AudioManager.Instance;
+
         GameObject player = GameObject.Find("Player");
         GFX = player.transform.GetChild(0).gameObject;
         party = GameObject.Find("GameManager").GetComponent<Party>();
@@ -69,9 +73,9 @@ public class RadialMenu : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                FindObjectOfType<AudioManager>().Play("GooseMenuClick");
+                _audioManager.Play("GooseMenuClick");
                 Destroy(GFX.transform.GetChild(1).gameObject);
-                FindObjectOfType<AudioManager>().Play("ChangedGoose");
+                _audioManager.Play("ChangedGoose");
                 puff.Play();
 
                 
@@ -115,12 +119,12 @@ public class RadialMenu : MonoBehaviour
         {
             if (!menu.activeSelf)
             {
-                FindObjectOfType<AudioManager>().Play("GooseMenuOpen");
+                _audioManager.Play("GooseMenuOpen");
                 menu.SetActive(true);
             }
             else
             {
-                FindObjectOfType<AudioManager>().Play("GooseMenuClose");
+                _audioManager.Play("GooseMenuClose");
                 menu.SetActive(false);
             }
         }

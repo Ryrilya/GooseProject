@@ -1,9 +1,17 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PickupItem : Interactable
 {
     public Item item;
+
+    private MouseControl _mouseControl;
+
+    private void Start()
+    {
+        _mouseControl = UIManager.Instance.GetComponent<MouseControl>();
+    }
 
     public override void Interact()
     {
@@ -21,5 +29,15 @@ public class PickupItem : Interactable
             // Check if object is required by any player's quests
             QuestManager.Instance.CheckItemGathered(item);
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        _mouseControl.Pickup();
+    }
+
+    private void OnMouseExit()
+    {
+        _mouseControl.Default();
     }
 }

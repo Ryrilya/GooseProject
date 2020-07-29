@@ -21,7 +21,7 @@ public class QuestManager : MonoSingleton<QuestManager>
 
     private void Start()
     {
-        DialogueSystem.Instance.OnDialogueClose += OpenQuestWindow;
+        // DialogueSystem.Instance.OnDialogueClose += OpenQuestWindow;
         _player = Player.Instance;
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
@@ -60,7 +60,7 @@ public class QuestManager : MonoSingleton<QuestManager>
             currentActiveInteractable.transform.LookAt(GameObject.Find("KiwiPosition").transform);
             currentActiveInteractable.GetComponent<PatrolFreedom>().enabled = true;
         }
-        else
+        else if(currentActiveInteractable.GetComponent<PatrolWithSpots>())
             currentActiveInteractable.GetComponent<PatrolWithSpots>().enabled = true;
     }
 
